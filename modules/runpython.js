@@ -1,4 +1,7 @@
-const { handleConsumeWebservicePython } = require("../../../../Productie/runPython/js/consumeWebservice.js");
+//const { handleConsumeWebservicePython } = require("../../../../Productie/runPython/js/consumeWebservice.js");
+
+// AskAi staat niet bij de Volvo dealers, dus even werkend gemaakt voor de dealers
+ // Let op;  Op de Ontwikkelmachine moet dit aaangepast worden als je er mee wilt werken
 
 var spawn = require('child_process').spawn;
 const process = require('process');
@@ -15,6 +18,15 @@ async function consumePython  (req, res)  {
    //pythonPARMS is in JSON formaat
   let pythonPARMS  = req.query.pythonPARMS;
   
+
+
+
+  var d = new Date();
+  var datetime = d.toLocaleString(); 
+     
+  console.log(datetime + ' consumePython python path: ' +pythonPATH + ' python pgm: ' + pythonPGM +' python guid: ' + pythonGUID + ' python parms: ' +pythonPARMS );
+  
+
   //console.log('pathFile ' + pathFile);
   
   // console.log("--------------------START---------------------");
@@ -49,11 +61,12 @@ var script = "/beesda2/python/test/marco/ai/createTranscriptFromAudioFile.py";
 
 
 
-  var resolveWebservice =  await handleConsumeWebservicePython(pythonPATH, pythonPGM, pythonGUID, pythonPARMS);
+  //var resolveWebservice =  await handleConsumeWebservicePython(pythonPATH, pythonPGM, pythonGUID, pythonPARMS);
    
-  let responseResolveWebservice = await resolveWebservice;
+  //let responseResolveWebservice = await resolveWebservice;
   
-  return responseResolveWebservice;
+   return true;
+  //return responseResolveWebservice;
   
 };
 
